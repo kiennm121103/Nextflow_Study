@@ -1,0 +1,9 @@
+sample_name,condition,replicate,batch
+sample1,control,1,batch1
+sample2,control,2,batch1
+sample3,treatment,1,batch1
+sample4,treatment,2,batch1
+sample5,control,1,batch2
+sample6,control,2,batch2
+sample7,treatment,1,batch2
+sample8,treatment,2,batch2
