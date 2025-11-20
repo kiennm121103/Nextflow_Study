@@ -1,0 +1,63 @@
+name: trim_galore
+description: Trim-Galore is a wrapper around Cutadapt and FastQC to consistently apply adapter and quality trimming to FastQ files
+keywords:
+  - trimming
+  - adapters
+  - sequencing adapters
+  - fastq
+  - quality control
+tools:
+  - trimgalore:
+      description: |
+        A wrapper tool around Cutadapt and FastQC to consistently apply quality 
+        and adapter trimming to FastQ files, with some extra functionality for 
+        MspI-digested RRBS-type (Reduced Representation Bisufite-Seq) libraries.
+      homepage: https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+      documentation: https://github.com/FelixKrueger/TrimGalore/blob/master/Docs/Trim_Galore_User_Guide.md
+      tool_dev_url: https://github.com/FelixKrueger/TrimGalore
+      licence: ["GPL v3"]
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - reads:
+      type: file
+      description: |
+        List of input FastQ files of size 1 and 2 for single-end and paired-end data,
+        respectively.
+      pattern: "*.{fq,fastq,fq.gz,fastq.gz}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  - reads:
+      type: file
+      description: |
+        List of trimmed FastQ files of size 1 and 2 for single-end and paired-end data,
+        respectively.
+      pattern: "*_trimmed.fq.gz"
+  - log:
+      type: file
+      description: Trimming report
+      pattern: "*_trimming_report.txt"
+  - html:
+      type: file
+      description: FastQC report (optional)
+      pattern: "*.html"
+  - zip:
+      type: file
+      description: FastQC report archive (optional)
+      pattern: "*.zip"
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@kiennm121103"

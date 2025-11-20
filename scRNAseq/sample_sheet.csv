@@ -1,5 +1,0 @@
-sample_id,fastq_dir,condition,batch
-sample1,/path/to/fastq/sample1,control,batch1
-sample2,/path/to/fastq/sample2,treatment,batch1
-sample3,/path/to/fastq/sample3,control,batch2
-sample4,/path/to/fastq/sample4,treatment,batch2
