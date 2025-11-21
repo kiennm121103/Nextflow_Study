@@ -26,6 +26,5 @@ process FASTQC {
         --outdir . \\
         $args\\
         $reads
-
-    
+    """"
 }
