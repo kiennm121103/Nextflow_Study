@@ -1,0 +1,7 @@
+channel:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bioconda::multiqc=1.31
+
+  

@@ -81,16 +81,27 @@ for (n_top_var in ntop) {
             panel.grid.minor = element_blank(),
             panel.background = element_blank(),
             panel.border = element_rect(colour = "black", fill=NA, size=1))
-}
+
 
 print(pl)
 
 if (decompose) {
     pc_names <- paste0("PC", attr(pca.data, "percentVar")$PC)
     long_pc <- reshape(pca.data, varying=pc_names, direction="long", seq="", timevar = "component", idvar="pcrow")
-
+    long_pc <- subset(long_pc, components<=5)
+    long_pc_grp <- reshape(long_pc, varying=names(groupings), direction="long", sep="", timevar="grouper")
+    long_pc_grp <- subset(long_pc_grp, grouper<=5)
+    long_pc_grp$component <- paste("PC", long_pc_grp$component)
+    long_pc_grp$grouper <- paste0(long_pc_grp$grouper, c("st","nd","rd","th","th")[long_pc_grp$grouper], "prefix")
+    pl <- ggplot(long_pc_grp, aes(x=Group, y=PC)) +
+        grom_point() +
+        stat_summary(fun=mean, geom = "line", aes(group=1)) +
+        labs(x=NULL, y=NULL, subtitle = plot_subtitle, tile = "PCs split by sample-name prefixes") +
+        face_grid(componet ~ grouper, scale = "free_x") +
+        scale_x_discrete(guide = guide_axis(n.dodge = 3))
+    print(pl)
 }
-
+}
 ## WRITE PC1 VS PC2 VALUES TO FILE
 pca.vals <- pca.data[, c("PC1","PC2")]
 colnames(pca.vals) <- paste0(colnames(pca.vals), ": ", percentVar[1:2], "% variance")
