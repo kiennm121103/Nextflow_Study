@@ -1,0 +1,73 @@
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+README*
+CHANGELOG*
+LICENSE
+docs/
+
+# Build artifacts
+*.log
+build/
+dist/
+*.egg-info/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Nextflow
+work/
+.nextflow/
+.nextflow.log*
+results/
+
+# Data files (don't include in image)
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.sam
+*.vcf
+*.bed
+*.gtf
+*.gff
+*.fa
+*.fasta
+*.fna
+data/
+*.h5ad
+*.rds
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
